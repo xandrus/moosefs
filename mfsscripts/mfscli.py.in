@@ -134,6 +134,7 @@ import codecs
 import json
 
 cgimode = 1 if 'GATEWAY_INTERFACE' in os.environ else 0
+ajax_request = False
 
 try:
 	xrange
@@ -9290,7 +9291,8 @@ if "RS" in sectionset and leaderfound:
 							data.append(rlstr)
 							data.append(labstr)
 							data.append(uniqstr)
-							data.append("")
+							if not show_labelmode_overrides:
+								data.append("")
 							tab.append(*data)
 			if cgimode:
 				out.append("""</table>""")
